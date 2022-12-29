@@ -27,6 +27,8 @@ function addBookToLibrary(book) {
   setColor(book_div, title_div);
 
   book_div.appendChild(title_div);
+  addRemoveListener(book_div);
+
   myLibrary.appendChild(book_div);
 }
 
@@ -53,6 +55,20 @@ function setColor(bg_div, fg_div) {
   const swap = Math.round(Math.random());
   bg_div.setAttribute("style", `${bg_style};background-color:${colors[swap]}`);
   fg_div.setAttribute("style", `${fg_style};color:${colors[1 - swap]}`);
+}
+
+function removeBook(event) {
+  const div = event.target;
+  if (div.classList.contains("book")) {
+    div.children.map((child) => child.remove());
+  } else {
+    div.parentElement.remove();
+  }
+  div.remove();
+}
+
+function addRemoveListener(node) {
+  node.addEventListener("click", removeBook);
 }
 
 addBookToLibrary(theHobbit);
