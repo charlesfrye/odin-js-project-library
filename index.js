@@ -75,7 +75,6 @@ addBookToLibrary(theHobbit);
 addBookToLibrary(dune);
 
 function addBookFromForm() {
-  console.log("hello!");
   const bookForm = document.forms["addBook"];
   const book = new Book(
     bookForm.title.value,
