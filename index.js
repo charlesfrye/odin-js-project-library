@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
+/* defines our "object model" for books */
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -5,45 +8,49 @@ class Book {
     this.pages = pages;
     this.read = read;
     this.info = function () {
-      const read_msg = this.read ? "already read" : "not read yet";
-      return `${this.title} by ${this.author}, ${this.pages} pages, ${read_msg}`;
+      const readMsg = this.read ? "already read" : "not read yet";
+      return `${this.title} by ${this.author}, ${this.pages} pages, ${readMsg}`;
     };
   }
 }
 
+/* sample books */
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 const dune = new Book("Dune", "Frank Herbert", 412, true);
 
 const myLibrary = document.querySelector(".bookshelf");
 
+/* adds a book to the library display */
 function addBookToLibrary(book) {
-  const book_div = document.createElement("div");
-  book_div.classList.add("book");
-  const title_div = document.createElement("div");
-  title_div.classList.add("title");
+  const bookDiv = document.createElement("div");
+  bookDiv.classList.add("book");
+  const titleDiv = document.createElement("div");
+  titleDiv.classList.add("title");
 
-  setTitle(title_div, book);
-  setWidth(book_div, book);
-  setColor(book_div, title_div);
+  setTitle(titleDiv, book);
+  setWidth(bookDiv, book);
+  setColor(bookDiv, titleDiv);
 
-  book_div.appendChild(title_div);
-  addRemoveListener(book_div);
+  bookDiv.appendChild(titleDiv);
+  addRemoveListener(bookDiv);
 
-  myLibrary.appendChild(book_div);
+  myLibrary.appendChild(bookDiv);
 }
 
+/* helper functions for addBookToLibrary */
 function setTitle(div, book) {
+  // eslint-disable-next-line no-param-reassign
   div.textContent = `${book.title} by ${book.author}`;
 }
 
 function setWidth(div, book) {
-  const book_width = Math.max(1, book.pages / 100);
-  div.setAttribute("style", `width:${book_width}rem`);
+  const bookWidth = Math.max(1, book.pages / 100);
+  div.setAttribute("style", `width:${bookWidth}rem`);
 }
 
-function setColor(bg_div, fg_div) {
-  const bg_style = bg_div.getAttribute("style");
-  const fg_style = fg_div.getAttribute("style");
+function setColor(bgDiv, fgDiv) {
+  const bgStyle = bgDiv.getAttribute("style");
+  const fgStyle = fgDiv.getAttribute("style");
   const colorPairs = [
     ["#2C3E50", "#E74C3C"],
     ["#3498DB", "#2C3E50"],
@@ -53,10 +60,11 @@ function setColor(bg_div, fg_div) {
   const colors =
     colorPairs[Math.round(Math.random() * (colorPairs.length - 1))];
   const swap = Math.round(Math.random());
-  bg_div.setAttribute("style", `${bg_style};background-color:${colors[swap]}`);
-  fg_div.setAttribute("style", `${fg_style};color:${colors[1 - swap]}`);
+  bgDiv.setAttribute("style", `${bgStyle};background-color:${colors[swap]}`);
+  fgDiv.setAttribute("style", `${fgStyle};color:${colors[1 - swap]}`);
 }
 
+/* functions for removing books */
 function removeBook(event) {
   const div = event.target;
   if (div.classList.contains("book")) {
@@ -71,11 +79,13 @@ function addRemoveListener(node) {
   node.addEventListener("click", removeBook);
 }
 
+/* add sample books to library directly */
 addBookToLibrary(theHobbit);
 addBookToLibrary(dune);
 
+/* add books from the form in the UI */
 function addBookFromForm() {
-  const bookForm = document.forms["addBook"];
+  const bookForm = document.forms.addBook;
   const book = new Book(
     bookForm.title.value,
     bookForm.author.value,
@@ -86,6 +96,8 @@ function addBookFromForm() {
   addBookToLibrary(book);
 }
 
+/* helper function for debugging */
+// eslint-disable-next-line no-unused-vars
 function showLibrary() {
   console.log(myLibrary);
 }

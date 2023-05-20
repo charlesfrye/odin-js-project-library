@@ -1,16 +1,20 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .title {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: none; /* iOS Safari */ /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+  writing-mode: vertical-rl;
+  font-size: large;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 .container {
@@ -38,17 +42,6 @@
   margin-right: 0.25rem;
 }
 
-.title {
-  writing-mode: vertical-rl;
-  font-size: large;
-  font-weight: bold;
-  height: 100%;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
 form {
   display: grid;
   grid-template-columns: 16rem;
@@ -61,10 +54,7 @@ form {
 }
 
 .btn {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10%/50%;
-  border-width: 0px;
+  border-width: 0;
 }
