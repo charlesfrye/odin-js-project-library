@@ -13,13 +13,16 @@
       <script src="index.js"></script>
       <form name="addBook" onsubmit="addBookFromForm(); return false">
         <div>
-          Title: <input type="text" name="title" placeholder="War & Peace" />
+          Title:
+          <input required type="text" name="title" placeholder="War & Peace" />
         </div>
         <div>
-          Author: <input type="text" name="author" placeholder="Tolstoy" />
+          Author:
+          <input required type="text" name="author" placeholder="Tolstoy" />
         </div>
         <div>
-          Pages: <input type="number" name="pages" placeholder="1225" />
+          Pages:
+          <input required type="number" name="pages" placeholder="1225" />
         </div>
         <div>Read? <input type="checkbox" name="read" /></div>
         <input type="submit" value="Submit" class="btn" />
