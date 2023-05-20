@@ -7,7 +7,7 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function () {
+    this.info = () => {
       const readMsg = this.read ? "already read" : "not read yet";
       return `${this.title} by ${this.author}, ${this.pages} pages, ${readMsg}`;
     };
@@ -84,6 +84,7 @@ addBookToLibrary(theHobbit);
 addBookToLibrary(dune);
 
 /* add books from the form in the UI */
+// eslint-disable-next-line no-unused-vars
 function addBookFromForm() {
   const bookForm = document.forms.addBook;
   const book = new Book(
